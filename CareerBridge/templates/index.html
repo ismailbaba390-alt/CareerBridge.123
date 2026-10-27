@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Home | CareerBridge{% endblock %}
+
+{% block content %}
+
+<section style="text-align: center; padding: 40px 10px;">
+    <h1 style="font-size: 42px;">Welcome to CareerBridge!</h1>
+
+    <p style="font-size: 20px;">
+        Your AI-Powered College Placement Portal
+    </p>
+
+    <p>
+        Build your skills. Create your resume.
+        Prepare for interviews and discover opportunities.
+    </p>
+
+    <br>
+
+    <a href="/opportunities" class="button">
+        Explore Career Opportunities →
+    </a>
+</section>
+
+<section>
+    <h1>Start Your Career Journey</h1>
+
+    <p>Choose a section to get started.</p>
+
+    <div class="cards">
+
+        <a href="/skills" class="card">
+            <h2>🎯 Learn Skills</h2>
+            <p>Discover technical skills and improve your knowledge.</p>
+            <strong>Explore Skills →</strong>
+        </a>
+
+        <a href="/resume" class="card">
+            <h2>📄 Resume Builder</h2>
+            <p>Create a professional resume for job applications.</p>
+            <strong>Build Resume →</strong>
+        </a>
+
+        <a href="/interview" class="card">
+            <h2>💬 Interview Preparation</h2>
+            <p>Practice interview questions and improve your confidence.</p>
+            <strong>Start Practice →</strong>
+        </a>
+
+        <a href="/opportunities" class="card">
+            <h2>💼 Job Opportunities</h2>
+            <p>Explore jobs and internship opportunities.</p>
+            <strong>View Opportunities →</strong>
+        </a>
+
+    </div>
+</section>
+
+{% endblock %}

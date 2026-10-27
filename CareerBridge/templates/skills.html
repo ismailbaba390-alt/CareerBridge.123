@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block title %}Skills | CareerBridge{% endblock %}
+
+{% block content %}
+
+<section class="skills-section">
+    <h1>Explore Your Skills 🎯</h1>
+
+    <p>Learn essential skills to improve your career opportunities.</p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>Python Programming</h2>
+            <p>Learn Python basics, functions, loops, and object-oriented programming.</p>
+            <strong>Level: Beginner</strong>
+
+            <a class="learn-link" href="https://www.w3schools.com/python/" target="_blank" rel="noopener noreferrer">
+                Start Learning →
+            </a>
+        </div>
+
+        <div class="card">
+            <h2>Web Development</h2>
+            <p>Learn HTML, CSS, JavaScript, and how to build websites.</p>
+            <strong>Level: Beginner</strong>
+
+            <a class="learn-link" href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer">
+                Start Learning →
+            </a>
+        </div>
+
+        <div class="card">
+            <h2>Data Science</h2>
+            <p>Understand data analysis, statistics, and machine learning basics.</p>
+            <strong>Level: Intermediate</strong>
+
+            <a class="learn-link" href="https://www.w3schools.com/datascience/" target="_blank"
+                rel="noopener noreferrer">
+                Start Learning →
+            </a>
+        </div>
+
+        <div class="card">
+            <h2>Communication Skills</h2>
+            <p>Improve your speaking, presentation, and teamwork skills.</p>
+            <strong>Level: All Levels</strong>
+
+            <a class="learn-link" href="https://www.coursera.org/" target="_blank" rel="noopener noreferrer">
+                Start Learning →
+            </a>
+        </div>
+
+        <div class="card">
+            <h2>SQL and Databases</h2>
+            <p>Learn how to store, manage, and retrieve data using SQL.</p>
+            <strong>Level: Beginner</strong>
+
+            <a class="learn-link" href="https://www.w3schools.com/sql/" target="_blank" rel="noopener noreferrer">
+                Start Learning →
+            </a>
+        </div>
+
+        <div class="card">
+            <h2>Git and GitHub</h2>
+            <p>Learn version control and how to manage coding projects.</p>
+            <strong>Level: Beginner</strong>
+
+            <a class="learn-link" href="https://docs.github.com/en/get-started" target="_blank"
+                rel="noopener noreferrer">
+                Start Learning →
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .skills-section {
+        animation: pageEnter 0.7s ease both;
+    }
+
+    .skills-section>h1,
+    .skills-section>p {
+        animation: fadeDown 0.7s ease both;
+    }
+
+    .cards .card {
+        position: relative;
+        animation: cardEnter 0.6s ease both;
+        transition: transform 0.3s ease,
+            box-shadow 0.3s ease;
+    }
+
+    .cards .card:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .cards .card:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .cards .card:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .cards .card:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    .cards .card:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+
+    .cards .card:nth-child(6) {
+        animation-delay: 0.6s;
+    }
+
+    .cards .card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 12px 25px rgba(8, 145, 178, 0.18);
+    }
+
+    .learn-link {
+        display: inline-block;
+        margin-top: 15px;
+        color: #0891b2;
+        font-weight: bold;
+        text-decoration: none;
+        transition: color 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .learn-link:hover {
+        color: #0e7490;
+        transform: translateX(4px);
+    }
+
+    @keyframes pageEnter {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeDown {
+        from {
+            opacity: 0;
+            transform: translateY(-12px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes cardEnter {
+        from {
+            opacity: 0;
+            transform: translateY(18px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .skills-section,
+        .skills-section>h1,
+        .skills-section>p,
+        .cards .card {
+            animation: none;
+        }
+
+        .cards .card,
+        .learn-link {
+            transition: none;
+        }
+    }
+</style>
+
+{% endblock %}

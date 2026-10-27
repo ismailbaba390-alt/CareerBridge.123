@@ -1,0 +1,278 @@
+{% extends "base.html" %}
+
+{% block title %}College Finder | CareerBridge{% endblock %}
+
+{% block content %}
+
+<style>
+    .college-hero {
+        text-align: center;
+        padding: 35px 10px;
+        animation: fadeIn 0.8s ease;
+    }
+
+    .college-hero h1 {
+        font-size: 36px;
+        color: #0f172a;
+    }
+
+    .college-hero p {
+        color: #64748b;
+    }
+
+    .search-panel {
+        background: white;
+        padding: 25px;
+        border-radius: 14px;
+        box-shadow: 0 5px 20px #0f172a12;
+        margin-bottom: 30px;
+    }
+
+    .search-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+    }
+
+    .search-grid label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .search-grid input,
+    .search-grid select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 7px;
+        background: white;
+        font-size: 15px;
+    }
+
+    .college-card {
+        background: white;
+        border-radius: 12px;
+        padding: 22px;
+        box-shadow: 0 4px 15px #0f172a10;
+        transition: transform 0.3s, box-shadow 0.3s;
+        animation: fadeIn 0.7s ease both;
+    }
+
+    .college-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 25px #0891b222;
+    }
+
+    .college-card h3 {
+        color: #0891b2;
+    }
+
+    .college-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .college-tag {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 20px;
+        background: #cffafe;
+        color: #155e75;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .note {
+        color: #64748b;
+        font-size: 13px;
+        margin-top: 20px;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<section class="college-hero">
+    <span class="college-tag">EDUCATION DISCOVERY</span>
+    <h1>Find Your Dream College 🎓</h1>
+    <p>Explore colleges, courses, eligibility and admission information.</p>
+</section>
+
+<section class="search-panel">
+    <h2>Search Colleges</h2>
+
+    <div class="search-grid">
+
+        <div>
+            <label for="collegeSearch">College Name</label>
+            <input type="text" id="collegeSearch" placeholder="Search college name...">
+        </div>
+
+        <div>
+            <label for="stateFilter">State</label>
+            <select id="stateFilter">
+                <option value="">All States</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="courseFilter">Course</label>
+            <select id="courseFilter">
+                <option value="">All Courses</option>
+                <option value="CSE">Computer Science (CSE)</option>
+                <option value="ECE">Electronics (ECE)</option>
+                <option value="EEE">Electrical (EEE)</option>
+                <option value="AIML">AI & Machine Learning</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="studentRank">Your Entrance Rank</label>
+            <input type="number" id="studentRank" min="1" placeholder="Enter your rank">
+        </div>
+
+    </div>
+
+    <br>
+
+    <button type="button" class="button" onclick="filterColleges()">
+        Search Colleges →
+    </button>
+
+    <button type="button" class="button" onclick="resetFilters()" style="background:#475569;">
+        Reset
+    </button>
+</section>
+
+<section>
+    <h2>Explore Colleges</h2>
+
+    <div class="college-grid" id="collegeGrid">
+
+        <article class="college-card" data-name="jntu hyderabad" data-state="Telangana" data-courses="CSE ECE EEE AIML">
+
+            <span class="college-tag">Engineering</span>
+            <h3>JNTU Hyderabad</h3>
+            <p>📍 Telangana</p>
+            <p><strong>Courses:</strong> CSE, ECE, EEE</p>
+            <p><strong>Admission:</strong> Check the official counselling cutoff.</p>
+            <a href="https://jntuh.ac.in/" target="_blank" rel="noopener noreferrer" class="button">Official Website
+                →</a>
+        </article>
+
+        <article class="college-card" data-name="osmania university" data-state="Telangana" data-courses="CSE ECE EEE">
+
+            <span class="college-tag">University</span>
+            <h3>Osmania University</h3>
+            <p>📍 Telangana</p>
+            <p><strong>Courses:</strong> Engineering and other disciplines</p>
+            <p><strong>Admission:</strong> Check official admission information.</p>
+            <a href="https://www.osmania.ac.in/" target="_blank" rel="noopener noreferrer" class="button">Official
+                Website →</a>
+        </article>
+
+        <article class="college-card" data-name="andhra university" data-state="Andhra Pradesh"
+            data-courses="CSE ECE EEE">
+
+            <span class="college-tag">University</span>
+            <h3>Andhra University</h3>
+            <p>📍 Andhra Pradesh</p>
+            <p><strong>Courses:</strong> Engineering and other disciplines</p>
+            <p><strong>Admission:</strong> Check official admission information.</p>
+            <a href="https://www.andhrauniversity.edu.in/" target="_blank" rel="noopener noreferrer"
+                class="button">Official Website →</a>
+        </article>
+
+        <article class="college-card" data-name="iit hyderabad" data-state="Telangana" data-courses="CSE ECE EEE AIML">
+
+            <span class="college-tag">Institute of Technology</span>
+            <h3>IIT Hyderabad</h3>
+            <p>📍 Telangana</p>
+            <p><strong>Courses:</strong> Multiple engineering disciplines</p>
+            <p><strong>Admission:</strong> Check the official admission process.</p>
+            <a href="https://www.iith.ac.in/" target="_blank" rel="noopener noreferrer" class="button">Official Website
+                →</a>
+        </article>
+
+    </div>
+
+    <p id="noResults" style="display:none;">
+        No matching colleges found. Try different search filters.
+    </p>
+
+    <p class="note">
+        Note: This is an initial sample directory, not a complete college database.
+        College listings, course availability and admission cutoffs must be verified.
+        No admission rank is guaranteed by this search.
+    </p>
+</section>
+
+<script>
+    function filterColleges() {
+        const name = document.getElementById("collegeSearch")
+            .value.trim().toLowerCase();
+
+        const state = document.getElementById("stateFilter").value;
+        const course = document.getElementById("courseFilter").value;
+
+        const rankInput = document.getElementById("studentRank").value;
+        const cards = document.querySelectorAll(".college-card");
+
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const collegeName = card.dataset.name;
+            const collegeState = card.dataset.state;
+            const courses = card.dataset.courses.split(" ");
+
+            const matchesName = collegeName.includes(name);
+            const matchesState = !state || collegeState === state;
+            const matchesCourse = !course || courses.includes(course);
+
+            const matches = matchesName && matchesState && matchesCourse;
+
+            card.style.display = matches ? "block" : "none";
+
+            if (matches) {
+                visibleCount++;
+            }
+        });
+
+        document.getElementById("noResults").style.display =
+            visibleCount === 0 ? "block" : "none";
+
+        if (rankInput && Number(rankInput) <= 0) {
+            alert("Please enter a valid positive rank.");
+        }
+    }
+
+    function resetFilters() {
+        document.getElementById("collegeSearch").value = "";
+        document.getElementById("stateFilter").value = "";
+        document.getElementById("courseFilter").value = "";
+        document.getElementById("studentRank").value = "";
+
+        document.querySelectorAll(".college-card").forEach(card => {
+            card.style.display = "block";
+        });
+
+        document.getElementById("noResults").style.display = "none";
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}Interview Preparation | CareerBridge{% endblock %}
+
+{% block content %}
+
+<section>
+    <h1>Interview Preparation 🎯</h1>
+    <p>Practice interview questions and test your knowledge.</p>
+
+    <div class="card">
+        <h2 id="question">Question 1: Tell me about yourself.</h2>
+
+        <textarea id="answer" placeholder="Type your answer here..."></textarea>
+
+        <button class="button" onclick="showAnswer()">
+            Show Sample Answer
+        </button>
+
+        <button class="button" onclick="nextQuestion()">
+            Next Question →
+        </button>
+
+        <div id="sample" style="display:none; margin-top:20px;">
+            <h3>Sample Answer</h3>
+            <p id="sampleText"></p>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+        <h2>Interview Tips</h2>
+        <ul>
+            <li>Research the company before the interview.</li>
+            <li>Explain your projects clearly.</li>
+            <li>Practice speaking confidently.</li>
+            <li>Be honest about your skills.</li>
+            <li>Prepare questions to ask the interviewer.</li>
+        </ul>
+    </div>
+</section>
+
+<style>
+    #answer {
+        width: 100%;
+        min-height: 120px;
+        padding: 12px;
+        margin: 15px 0;
+        border: 1px solid #cbd5e1;
+        border-radius: 7px;
+        font: inherit;
+    }
+
+    button {
+        border: none;
+        cursor: pointer;
+        margin: 5px;
+        font: inherit;
+    }
+</style>
+
+<script>
+    const questions = [
+        {
+            question: "Question 1: Tell me about yourself.",
+            answer: "Introduce yourself, your education, key skills, projects, and career goals."
+        },
+        {
+            question: "Question 2: What are your strengths?",
+            answer: "Describe two or three strengths and give a real example of how you used them."
+        },
+        {
+            question: "Question 3: Why should we hire you?",
+            answer: "Explain how your skills, willingness to learn, and relevant projects match the role."
+        },
+        {
+            question: "Question 4: Explain your final-year project.",
+            answer: "Describe the problem, your proposed solution, technologies used, your contribution, and the result."
+        },
+        {
+            question: "Question 5: Where do you see yourself in five years?",
+            answer: "Explain your professional goals and how you plan to develop your skills and responsibilities."
+        }
+    ];
+
+    let currentQuestion = 0;
+
+    function showAnswer() {
+        document.getElementById("sampleText").textContent =
+            questions[currentQuestion].answer;
+
+        document.getElementById("sample").style.display = "block";
+    }
+
+    function nextQuestion() {
+        currentQuestion = (currentQuestion + 1) % questions.length;
+
+        document.getElementById("question").textContent =
+            questions[currentQuestion].question;
+
+        document.getElementById("answer").value = "";
+        document.getElementById("sample").style.display = "none";
+    }
+</script>
+
+{% endblock %}
